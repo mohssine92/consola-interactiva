@@ -9,18 +9,28 @@ console.clear();
 
 
 
-/* voy a tener que trabajar con varios proceso asyncronos , hay muchas formas de hacer esto en  una app de node , sabemos que todo se recorre por defecto secuencialmente , si vamos a crear las siguiente Function 
-   main que va ser asyncrono , asi todo codigo que vamos a implementar va estar dentro de main ..*/
+/* voy a tener que trabajar con varios proceso asyncronos , hay muchas formas de hacer esto en  una app de node , sabemos que todo se Ejecuta por defecto secuencialmente , Asi vamos a crear la siguiente Function 
+   main que va ser asyncrono , ASi las Funcciones que implemento dentro pueden tener await => espera la promesa que se resuelva , sino por async  tenia que trabajar con then() y no es el caso ..  ..*/
 
 
 
   const main = async()=>{
 
-     console.log('Hola mundo ');
 
-     mostrarMenu();
+     let opt = '';
 
-     /* pausa(); */
+     do {
+        
+        opt = await mostrarMenu();
+      
+        console.log({ opt });
+
+        if( opt !== '0') await pausa();  
+
+     } while ( opt !== '0' );  /* ejecuta la primera vez , asi si la condicion devuelva true , sigua ejecutandose Infinitivamente , hasta que devuelva false . */
+
+    
+
 
 
   }
