@@ -53,7 +53,7 @@ const inquirerMenu = async() =>{
     console.log(' Seleccione una opcion'.green);
     console.log('=========================\n'.green);  
 
- 
+                         /* Listar menu seleccionable  */
      const { options } = await inquirer.prompt(preguntas); 
    
       return options;
@@ -80,8 +80,34 @@ const pausa = async()=> {
 }
 
 
+const leerInput = async( message ) => {
+
+   const question = [
+      {
+        type: 'input',
+        name: 'desc',
+        message,
+        validate( value ){
+          if( value.length === 0 ){
+            return 'Por Favor ingrese un valor';
+          }
+          return true;
+        }
+
+      },
+      
+   ];
+   
+
+   const { desc }  = await inquirer.prompt(question);
+   return desc ; 
+
+}
+
+
 
 module.exports ={
     inquirerMenu,
-    pausa
+    pausa,
+    leerInput
 }
