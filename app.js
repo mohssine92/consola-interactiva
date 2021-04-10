@@ -1,8 +1,9 @@
-const { inquirerMenu, pausa, leerInput } = require("./helpers/inquirer");
+const { inquirerMenu,
+        pausa,
+        leerInput 
+} = require("./helpers/inquirer");
 
 const Tareas = require("./models/tareas");
-
-
 
 
   const main = async()=>{
@@ -13,6 +14,7 @@ const Tareas = require("./models/tareas");
      const tareas = new Tareas();  /* Objetc Type Tareas */ 
 
      do {
+        
         
          opt = await inquirerMenu(); 
         
@@ -29,7 +31,7 @@ const Tareas = require("./models/tareas");
 
              case '2':
              /* Listar Tareas */ 
-             console.log(tareas._listado); 
+             console.log(tareas.listadoArr); 
 
              break;
              
@@ -40,10 +42,6 @@ const Tareas = require("./models/tareas");
      } while ( opt !== '0' ); 
 
      
-     
-    
-
-
 
   }
 
