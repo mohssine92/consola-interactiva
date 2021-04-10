@@ -8,27 +8,75 @@ const preguntas = [
        type: 'list',
        name: 'options',
        message: 'que deseas hacer ? ',
-       choices: ['opt1', 'opt2','opt3']
+       choices: [
+          {
+            value: '1',
+            name:'1. Crear tarea'
+          }, 
+          {
+            value: '2',
+            name:'2. Listar tareas'
+          },
+          {
+            value: '3',
+            name:'3. Listar tarea Completas'
+          },
+          {
+            value: '4',
+            name:'4. Listar tarea pendientes'
+          },
+          {
+            value: '5',
+            name:'5. Completas tarea(s)'
+          },         
+          {
+            value: '6',
+            name:'6. Borrar tarea'
+          },
+          {
+            value: '0',
+            name:'0. Salir'
+          },    
+
+       ]
    }
-
-
+  
 
 ]
 
 const inquirerMenu = async() =>{
 
-   /*  console.clear(); */
+    console.clear();
     console.log('==========================='.green);
     console.log(' Seleccione una opcion'.green);
     console.log('=========================\n'.green);  
 
-    /* Regresa una promesa , esta implementada dentro de uan funccion asyn asi puedo usar await  */
-    const opt = await inquirer.prompt(preguntas);
+ 
+     const { options } = await inquirer.prompt(preguntas[0]);
 
-    return opt;
+      return options;
 
 }
 
+
+const pausa = async()=> {
+  
+
+    console.log('\n');
+    await inquirer.prompt([
+        {
+            type: 'input',
+            name: 'Enter', 
+            message:`Presiona ${ 'enter'.green } para continuar`
+        }
+    ]);
+    
+
+}
+
+
+
 module.exports ={
-    inquirerMenu
+    inquirerMenu,
+    pausa
 }

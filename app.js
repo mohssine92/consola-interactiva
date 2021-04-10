@@ -1,5 +1,5 @@
-const { inquirerMenu } = require("./helpers/inquirer");
-const { pausa } = require("./helpers/mensajes");
+const { inquirerMenu, pausa } = require("./helpers/inquirer");
+
 
 
 
@@ -16,10 +16,11 @@ console.clear();
 
      do {
         
-        opt = await inquirerMenu();
-        
-        console.log({ opt });
-
+          opt = await inquirerMenu(); 
+          console.log({ opt });
+          
+          await pausa();
+      
 
      } while ( opt !== '0' ); 
 
