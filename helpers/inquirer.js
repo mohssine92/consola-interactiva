@@ -44,16 +44,18 @@ const preguntas = [
 
 ]
 
+
+
 const inquirerMenu = async() =>{
 
-    console.clear();
+    console.clear(); 
     console.log('==========================='.green);
     console.log(' Seleccione una opcion'.green);
     console.log('=========================\n'.green);  
 
  
-     const { options } = await inquirer.prompt(preguntas[0]);
-
+     const { options } = await inquirer.prompt(preguntas); 
+   
       return options;
 
 }
@@ -61,16 +63,19 @@ const inquirerMenu = async() =>{
 
 const pausa = async()=> {
   
+    const question = [
+      {
+        type: 'input',
+        name: 'Enter', 
+        message:`Presiona ${ 'enter'.green } para continuar`
+      }
+    ]
 
     console.log('\n');
-    await inquirer.prompt([
-        {
-            type: 'input',
-            name: 'Enter', 
-            message:`Presiona ${ 'enter'.green } para continuar`
-        }
-    ]);
-    
+
+    await inquirer.prompt(question);
+    /* es input con tecla enter en este caso se dispara resolve */
+
 
 }
 
