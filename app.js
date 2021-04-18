@@ -1,4 +1,4 @@
-const { guardarDb } = require("./helpers/guardarArchivo");
+const { guardarDb, leerDB } = require("./helpers/guardarArchivo");
 const { inquirerMenu,
         pausa,
         leerInput 
@@ -13,6 +13,14 @@ const Tareas = require("./models/tareas");
      let opt = '';
 
      const tareas = new Tareas(); 
+
+     const tareasDB = leerDB();
+
+     if( tareasDB ){
+       /* establecer las tareas */
+
+     }
+     await pausa();
 
      do {
         
@@ -38,7 +46,7 @@ const Tareas = require("./models/tareas");
         }
 
         /* procesar el guardo de datos , en un archivo ,sera mi base datos  */ /* video 54 */ 
-        /*   guardarDb( tareas.listadoArr ); */
+        /*   guardarDb( tareas.listadoArr );  */
                
                 
          await pausa();
