@@ -43,7 +43,19 @@ const Tareas = require("./models/tareas");
              /* Listar Tareas */
              tareas.listadoCompleto();
 
+             break; 
 
+             case '3':
+             /* Tareas Completas */
+             tareas.listarPendientesCompletadas(true);         
+ 
+             break;
+
+             case '4':
+              /* Tareas pendientes */
+            
+             tareas.listarPendientesCompletadas(false);    
+ 
              break;
              
         }

@@ -131,7 +131,7 @@ const inquirerMenu = async() =>{
           },
          {
            value: '0',
-           name:`${'0.'.red } Salir`
+           name:`${'0.'.red } salir`
          },    
 
       ]
