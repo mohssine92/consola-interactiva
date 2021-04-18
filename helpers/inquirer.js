@@ -100,7 +100,7 @@ const inquirerMenu = async() =>{
        /* Video 49 */
        const preguntas = [    
 
-  {
+          {
       type: 'list',
       name: 'options',
       message: 'que deseas hacer ? ',
@@ -135,10 +135,10 @@ const inquirerMenu = async() =>{
          },    
 
       ]
-  }
+          }
  
 
-       ]
+      ]
 
       const { options } = await inquirer.prompt(preguntas);  
   
@@ -203,6 +203,14 @@ const listarBorrarTarea = async ( tareas = [] ) => {
 
    })
 
+    /* añadir al pricipio de la coleccion */
+    choices.unshift(
+      {
+        value: '0',
+        name: `${ '0.'.green } ${ 'Cancelar'.red }`
+      }
+    );
+
    const preguntas = [
       {
          type: 'list',
@@ -213,10 +221,26 @@ const listarBorrarTarea = async ( tareas = [] ) => {
 
    ]
 
-   const  id  = await inquirer.prompt(preguntas);
+   const { id } = await inquirer.prompt(preguntas);
    return id;
 
 
+}
+
+const confirmar = async ( message )  => {
+ /* confirmar si se va borrar la tarea */
+  
+ const question = [
+    {
+      type: 'confirm',
+      name: 'ok',
+      message
+    }
+ ]
+
+   const { ok } = await inquirer.prompt(question);
+   return ok;
+ 
 }
 
 
@@ -225,5 +249,6 @@ module.exports ={
     inquirerMenu,
     pausa,
     leerInput,
-    listarBorrarTarea
+    listarBorrarTarea,
+    confirmar
 }

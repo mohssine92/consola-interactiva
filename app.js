@@ -2,7 +2,8 @@ const { guardarDb, leerDB } = require("./helpers/guardarArchivo");
 const { inquirerMenu,
         pausa,
         leerInput,
-        listarBorrarTarea
+        listarBorrarTarea,
+        confirmar
 } = require("./helpers/inquirer"); /* aquimi paquete de funcciones , voy desestructurando  */
 
 const Tareas = require("./models/tareas");
@@ -59,12 +60,21 @@ const Tareas = require("./models/tareas");
  
              break;
 
+             case '5':
+             
+             
+             break;
+
              case '6':
               /* Borrar  tare  */
               const id = await listarBorrarTarea( tareas.listadoArr );
-              console.log(id);
-               
- 
+             
+              if( id !== '0'){ 
+                const ok = await confirmar('Estas seguro?');
+                if( ok ){ tareas.borrarTarea( id )}
+
+              }
+              
               break
              
         }

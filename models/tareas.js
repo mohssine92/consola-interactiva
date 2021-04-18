@@ -17,8 +17,10 @@ class Tareas {
 
   borrarTarea( id ='' ){
       /* eleminar prop del objeto  */
+      if( id == 0 ){ return }
       if( this._listado[id] ){
         delete this._listado[id]; 
+        console.log('Tarea Borrada '.red.italic);
       }
     
   }
