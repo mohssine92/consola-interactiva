@@ -18,10 +18,10 @@ class Tareas {
      
    const listado = [];
 
-   /* este metodo de este objeto Propio de js  me extiende todo los llaves que tengo en un objeto , y regresa un arreglo de llaves   */
+   /* este metodo de este objeto Propio de js  , video 53 min:5:00  , extraer los lleves que tengo en objeto , */
    Object.keys(this._listado).forEach( key => {
       
-      const tarea = this._listado[key]; /* obtengo valor de la lleve */
+      const tarea = this._listado[key];  
      
       listado.push( tarea ); 
     
