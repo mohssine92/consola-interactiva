@@ -22,9 +22,8 @@ const leerDB = () => {
  
    /* parsear json string a un array  */
    const data = JSON.parse(info);
-   console.log(data);
 
-  return null;
+   return data;
 
 }
 

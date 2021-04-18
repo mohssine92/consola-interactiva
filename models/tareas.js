@@ -4,13 +4,26 @@ const Tarea = require("./tarea");
 
 class Tareas {
 
-    /* uso obj es facil ed llenar , array falta .pushMetod para rellenar*/
+   /* uso obj es facil ed llenar , array falta .pushMetod para rellenar*/
    _listado = {};  
 
   constructor( ) {
       
      this._listado = {}; 
 
+  }
+
+  cargarTareasFromArr( tareas = [] ) {
+  
+    tareas.forEach( tarea => {
+        
+        this._listado[tarea.id] = tarea;
+
+    });
+
+   
+          
+ 
   }
 
 
@@ -36,6 +49,8 @@ class Tareas {
      const tarea = new Tarea( desc );  
      this._listado[tarea.id] = tarea;
   }
+
+
 
 
 

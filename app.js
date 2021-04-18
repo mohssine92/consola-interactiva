@@ -14,18 +14,20 @@ const Tareas = require("./models/tareas");
 
      const tareas = new Tareas(); 
 
+     /* traer data del archivo base de datos , que se va reescribirse en cada instancia */
      const tareasDB = leerDB();
 
      if( tareasDB ){
-       /* establecer las tareas */
+       /* establecer las tareas , lograDo ciclo infinito para la data => Data persistente */
+       tareas.cargarTareasFromArr( tareasDB );
 
      }
-     await pausa();
+     
 
      do {
         
         
-         opt = await inquirerMenu(); 
+        opt = await inquirerMenu(); 
           
         
         switch ( opt ) {
@@ -46,7 +48,8 @@ const Tareas = require("./models/tareas");
         }
 
         /* procesar el guardo de datos , en un archivo ,sera mi base datos  */ /* video 54 */ 
-        /*   guardarDb( tareas.listadoArr );  */
+        /* lo que hace reescribir archivo en cada ejecucion (cada instancias) , para tener data persistente hemos creado un ciclo de vida infinito    */
+          guardarDb( tareas.listadoArr ); 
                
                 
          await pausa();
