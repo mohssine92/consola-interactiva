@@ -1,7 +1,8 @@
 const { guardarDb, leerDB } = require("./helpers/guardarArchivo");
 const { inquirerMenu,
         pausa,
-        leerInput 
+        leerInput,
+        listarBorrarTarea
 } = require("./helpers/inquirer"); /* aquimi paquete de funcciones , voy desestructurando  */
 
 const Tareas = require("./models/tareas");
@@ -57,6 +58,14 @@ const Tareas = require("./models/tareas");
              tareas.listarPendientesCompletadas(false);    
  
              break;
+
+             case '6':
+              /* Borrar  tare  */
+              const id = await listarBorrarTarea( tareas.listadoArr );
+              console.log(id);
+               
+ 
+              break
              
         }
 

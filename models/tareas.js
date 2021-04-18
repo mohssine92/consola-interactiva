@@ -15,6 +15,14 @@ class Tareas {
 
   }
 
+  borrarTarea( id ='' ){
+      /* eleminar prop del objeto  */
+      if( this._listado[id] ){
+        delete this._listado[id]; 
+      }
+    
+  }
+
   cargarTareasFromArr( tareas = [] ) {
   
     tareas.forEach( tarea => {
