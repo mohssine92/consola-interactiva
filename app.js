@@ -40,8 +40,9 @@ const Tareas = require("./models/tareas");
              break;
 
              case '2':
-             /* Listar Tareas */ 
-             console.log(tareas.listadoArr); 
+             /* Listar Tareas */
+             tareas.listadoCompleto();
+
 
              break;
              
