@@ -5,8 +5,7 @@ const archivo = './db/data.json';
 const guardarDb = ( data ) => {  /* video 54 */
   /* generar archivo , con datos */
  
-
-   fs.writeFileSync( archivo,JSON.stringify(data) );
+   fs.writeFileSync( archivo, JSON.stringify(data) );
 
 
 } 

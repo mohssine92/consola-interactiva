@@ -6,7 +6,7 @@ const Tarea = require("./tarea");
 
 class Tareas {
 
-   /* uso obj es facil ed llenar , array falta .pushMetod para rellenar*/
+   /* uso obj es facil de llenar y borra objetos dentro del objeto padre , array falta .pushMetod para rellenar*/
    _listado = {};  
 
   constructor( ) {
@@ -17,7 +17,7 @@ class Tareas {
 
   borrarTarea( id ='' ){
       /* eleminar prop del objeto  */
-      if( id == 0 ){ return }
+    
       if( this._listado[id] ){
         delete this._listado[id]; 
         console.log('Tarea Borrada '.red.italic);
@@ -28,7 +28,7 @@ class Tareas {
   cargarTareasFromArr( tareas = [] ) {
   
     tareas.forEach( tarea => {
-        
+        /*  transformar array a objetos */
         this._listado[tarea.id] = tarea;
 
     });
@@ -52,7 +52,7 @@ class Tareas {
     
    }); 
      
-   return listado;  /* valore de llave */
+   return listado; /* colleccion de valores */
   
   }
 
@@ -84,7 +84,8 @@ class Tareas {
   }
 
   listarPendientesCompletadas( completadas = true ){
-     console.log();
+     console.log(); /* genera espacio en interfaz consola */
+
      let contador = 0;
 
      this.listadoArr.forEach(( tarea ) => {
@@ -102,7 +103,7 @@ class Tareas {
           
           if( completadoEn ){
              contador +=1;   
-             console.log(`${contador.toString().green} ${'.'.green} ${desc} :: ${completadoEn}`);   
+             console.log(`${contador.toString().green} ${'.'.green} ${desc} :: ${completadoEn.green}`);   
  
           }
            
@@ -127,6 +128,36 @@ class Tareas {
 
           
 
+
+  }
+
+  toggleCompletadas ( ids = [] ) {
+     
+      ids.forEach( id => {
+        
+         const tarea = this._listado[id]
+         
+         if( !tarea.completadoEn ) {
+          
+             tarea.completadoEn = new Date().toISOString()
+  
+         }
+  
+       /* como js pasa sus objetos por referencia , un cambio como este se actualiza en el objeto original por
+          Ref, es como subscribir una variable  */
+
+      });
+
+      this.listadoArr.forEach( tarea => {
+        
+         if( !ids.includes(tarea.id) ) {
+            this._listado[tarea.id].completadoEn = null
+
+         }
+
+      });
+       
+     
 
   }
 

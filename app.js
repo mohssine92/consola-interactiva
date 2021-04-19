@@ -3,7 +3,8 @@ const { inquirerMenu,
         pausa,
         leerInput,
         listarBorrarTarea,
-        confirmar
+        confirmar,
+        showListadoChecklist
 } = require("./helpers/inquirer"); /* aquimi paquete de funcciones , voy desestructurando  */
 
 const Tareas = require("./models/tareas");
@@ -61,6 +62,9 @@ const Tareas = require("./models/tareas");
              break;
 
              case '5':
+              /* marcar como completado o pendiente */
+             const ids = await showListadoChecklist( tareas.listadoArr );
+             tareas.toggleCompletadas(ids);
              
              
              break;
@@ -80,7 +84,7 @@ const Tareas = require("./models/tareas");
         }
 
         /* procesar el guardo de datos , en un archivo ,sera mi base datos  */ /* video 54 */ 
-        /* lo que hace reescribir archivo en cada ejecucion (cada instancias) , para tener data persistente hemos creado un ciclo de vida infinito    */
+        /* lo que hace reescribir archivo en cada ejecucion (cada instancias) , para tener data persistente hemos creado un ciclo de vida infinito  ver linea leerDB();   tareas.cargarTareasFromArr( tareasDB );  */
           guardarDb( tareas.listadoArr ); 
                
                 
